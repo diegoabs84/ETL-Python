@@ -1,7 +1,8 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, VARCHAR, CHAR, NUMERIC, Date
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy_utils import create_database, database_exists
-import local_settings as settings
+from local_settings import banco_operacional as bo
+from local_settings import banco_dimensional as bd
 
 
 
@@ -18,14 +19,14 @@ def get_engine (user, passwd, host, port, db ):
 
 def get_engine_from_settings(model: dict):
     keys = [model.user, model.passwd, model.host, model.port, model.db]
-    if not all (key in keys for key in settings.keys()):
+    if not all (key in keys for key in local_settings.keys()):
         raise Exception ('Bad config file')
 
-    return get_engine(settings['user'],
-                    settings['passwd'],
-                    settings['host'],
-                    settings['port'],
-                    settings['db'])
+    return get_engine(local_settings['user'],
+                    local_settings['passwd'],
+                    local_settings['host'],
+                    local_settings['port'],
+                    local_settings['db'])
 
 
 #Iniciando uma sessão com o banco de dados
@@ -36,7 +37,7 @@ def get_session():
 
 
 
-engine_operacional = get_engine_from_settings(settings.banco_operacional)
+engine_operacional = get_engine_from_settings(bo)
 session_operacional = get_session()
-engine_dimensional = get_engine_from_settings(settings.banco_dimensional)
+engine_dimensional = get_engine_from_settings(bd)
 session_dimensional = get_session()

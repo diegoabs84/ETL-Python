@@ -39,8 +39,24 @@ def tl_dim_locadora(locadora : dict):
             art = Dim_artista(a,count)
             dim_locadora["dm_artista"].append(art)
             session_dimensional.add(art)
-        
-        #Preparando para preencher a tabela dimensional socio
+
+    except Exception as e:
+        Traceback(e)    
+
+        session_dimensional.commit()
+        print([x.__getattribute__("nom_art") for x in dim_locadora["dm_artista"]])
+
+def main():
+     loc = ext_op()
+     # print(folha_dict)
+     # print([x.__getattribute__("dsc_cargo") for x in folha_dict["cargos"]])
+     tl_dim_locadora(loc)
+
+if __name__ == '__main__':
+     main()
+     
+     
+""" #/Preparando para preencher a tabela dimensional socio
         for soc in locadora["socios"]:
             for tip in locadora["tiposSocios"]:
                 if tip.cod_tps == soc.cod_tps:
@@ -64,8 +80,6 @@ def tl_dim_locadora(locadora : dict):
             dim_locadora["dm_titulo"].append(tit)
             session_dimensional.add(tit)
     
-
+"""
 
     
-    except Exception as e:
-        Traceback(e)    
