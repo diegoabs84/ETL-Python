@@ -171,7 +171,7 @@ class Dim_tempo(Base):
     def __init__(self, locacoes : Locacoes, id) -> None:
         super().__init__()
         self.id_tempo = id
-        self.nu_ano = locacoes.dat_loc.year
+        self.nu_ano = locacoes.dat_loc.year 
         self.nu_mes = locacoes.dat_loc.month
         self.nu_dia = locacoes.dat_loc.day
         

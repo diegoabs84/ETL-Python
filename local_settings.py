@@ -11,3 +11,11 @@ banco_dimensional = {'user': 'dw_locadora',
               'port': 1521,
               'db': 'dw_locadora'
              }
+
+postgres = { 'user': 'postgres',
+              'passwd': 'admin',
+              'host': 'localhost',
+              'sslmode': 'require',
+              'dbname': 'locadora',
+              'port': 5432
+            }
