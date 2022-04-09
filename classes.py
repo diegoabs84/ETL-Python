@@ -4,8 +4,7 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, VARCH
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy_utils import create_database, database_exists
 from sqlalchemy.ext.declarative import declarative_base
-from local_settings import banco_operacional as settings
-import conexao
+
 
 
 
